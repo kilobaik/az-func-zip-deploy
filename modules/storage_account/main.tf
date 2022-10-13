@@ -9,3 +9,9 @@ resource "azurerm_storage_account" "storage_account" {
   enable_https_traffic_only = true
   tags                      = merge(var.tags, local.common_tags)
 }
+
+resource "azurerm_storage_container" "default_container" {
+  name                  = "default"
+  storage_account_name  = azurerm_storage_account.storage_account.name
+  container_access_type = "private"
+}
