@@ -31,4 +31,3 @@ override.tf.json
 # Dev envioronment
 .idea/
 .DS_Store
-**/test
