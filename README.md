@@ -1,4 +1,4 @@
-# Azure Function Zip-Deployment
+# Azure Function | Zip-Deployment regardless of OS type
 
 ## Introduction
 
