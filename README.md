@@ -65,6 +65,35 @@ So, step-by-step solution is as following:
 ![](./docs/az-func-zip-deploy.png "Zip-Deployment")
 
 
+## Test
+
+> **Prerequisite**:
+> You need to install the following tools:
+>   1. Azure CLI
+>   2. Docker
+>   3. Terraform
+
+In the `./test` directory, there is a sample code you can rely one to test
+
+```
+./test
+    - /functions - containes Http trigger implemented in python with the requirements.
+    - /main - contains terraform code.
+```
+
+1. Login to your azure subscription using Azure CLI `az login`
+2. Set your subscription as a default one `az account set -s ${SUBSCRIPTION_ID}`
+3. Create a resource group to play with `az group create -l ${LOCATION} -n ${RESOURCE_GROUP_NAME}`
+4. Modify `main/main.tf` local variables `local.resource_group_name` and `local.location` to match the name and the location of your resource group.
+5. Go to `test/main` folder and run `terraform init`
+6. Apply the changes `terraform apply --auto-approve`
+7. Upload some file to the `default` container to test
+
+
+![](./docs/blob-not-found-example.png "Blob not found example")
+![](./docs/blob-found-example.png "Blob found example")
+
+
 ## Conclusion
 
 There is always another way to do any task in my opinion, and you should be always able to decide which approach you want
