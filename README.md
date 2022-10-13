@@ -46,10 +46,12 @@ My Azure Function App uses `linux/amd64` OS, which will not work definitely with
 
 ## Solution
 
-To solve the issue, we need to build the dependencies on the OS used by our **Azure Function App**.
+> _**Hint:** Docker must be installed and running on the development machine first._
+
+To solve the issue, we need to build the dependencies on the OS used by our Azure Function App.
 This could be done of course using [Docker](https://docs.docker.com) relying on
 the `mcr.microsoft.com/azure-functions/python` image
-(all supported azure function images could be found [here](https://hub.docker.com/_/microsoft-azure-functions)).
+_(all supported azure function images could be found [here](https://hub.docker.com/_/microsoft-azure-functions))_.
 
 So, step-by-step solution is as following:
 
@@ -59,6 +61,9 @@ So, step-by-step solution is as following:
 4. Compress the source code folder of the functions in a ZIP file.
 5. Publish the code using `az functionapp deployment source config-zip`
 
-> _**Hint:** Docker must be installed and running on the development machine first._
 
 ![](./docs/az-func-zip-deploy.png "Zip-Deployment")
+
+
+## Summary
+
