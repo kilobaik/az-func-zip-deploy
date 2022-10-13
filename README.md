@@ -65,5 +65,12 @@ So, step-by-step solution is as following:
 ![](./docs/az-func-zip-deploy.png "Zip-Deployment")
 
 
-## Summary
+## Conclusion
 
+There is always another way to do any task in my opinion, and you should be always able to decide which approach you want
+to follow, come up with your own solution and shape in the way you want.
+However, such decision is not easy to take if you're not aware bout the available approaches and your system  requirements.
+
+For example, deploying Azure Function App code could be done using [Zip Deploy](https://learn.microsoft.com/en-us/azure/azure-functions/functions-deployment-technologies#zip-deploy), [Web Deploy](https://learn.microsoft.com/en-us/azure/azure-functions/functions-deployment-technologies#web-deploy-msdeploy), [Source control](https://learn.microsoft.com/en-us/azure/azure-functions/functions-deployment-technologies#source-control) or even [Local Git](https://learn.microsoft.com/en-us/azure/azure-functions/functions-deployment-technologies#local-git).
+It's not restricted by [Zip Deploy](https://learn.microsoft.com/en-us/azure/azure-functions/functions-deployment-technologies#zip-deploy), but that was my favorite solution to accelerate the development cycle.
+Furthermore, it is the recommended deployment technology for Azure Functions according to [Azure documentation](https://learn.microsoft.com/en-us/azure/azure-functions/functions-deployment-technologies)
