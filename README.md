@@ -20,8 +20,7 @@ example. However, surprisingly, I got `500 INTERNAL_SERVER_ERROR` response.
 
 Thanks to Azure Application Insights, I could find the root
 cause of that internal server error response.
-
-The problem starts from my Mac-OS development machine, on which the dependencies are collected.
+The problem starts from my Macbook development machine, on which the dependencies are collected.
 
 During deployment process, one of the base dependency of `azure.storage.blob` module
 is [cryptography](https://cryptography.io/en/latest/installation/#supported-platforms)
