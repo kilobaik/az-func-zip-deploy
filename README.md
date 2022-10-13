@@ -42,3 +42,18 @@ However, my Azure Function App is `linux/amd64` which make it incompatible and t
 > ```
 
 ## Solution
+
+To solve the issue, we need to build the dependencies on the OS used by our **Azure Function App**.
+This could be done of course using [Docker](https://docs.docker.com) relying on the `mcr.microsoft.com/azure-functions/python` image
+(all supported azure function images could be found [here](https://hub.docker.com/_/microsoft-azure-functions)).
+
+So, step-by-step solution is as following:
+1. Deploy the essential infrastructures (App Service plan, Function App and Storage Account).
+2. Build a Docker container and install the dependencies inside it.
+3. Copy the dependencies from the docker container to `.python_packages` in the source code folder (of the functions).
+4. Compress the source code folder of the functions in a ZIP file.
+5. Publish the code using `az functionapp deployment source config-zip`
+
+> _**Hint:** Docker must be installed and running on the development machine first._
+
+![](./docs/az-func-zip-deploy.png "Zip-Deployment")
