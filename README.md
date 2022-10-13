@@ -13,10 +13,12 @@ exist in the `default` container in the Azure Storage Account, otherwise it retu
 
 ## Problem
 
-After the a (apparently) successful deployment, it was expected to read the content fo a blob in `default` container in the
+After the a (apparently) successful deployment, it was expected to read the content fo a blob in `default` container in
+the
 storage account by calling `https://az-func-app-http.azurewebsites.net/api/HttpTrigger1?code=**&blob_name=test.txt` for
-example.
-Surprisingly, I got `500 INTERNAL_SERVER_ERROR` response. Thanks to Azure Application Insights, I could find the root
+example. However, surprisingly, I got `500 INTERNAL_SERVER_ERROR` response.
+
+Thanks to Azure Application Insights, I could find the root
 cause of that internal server error response.
 
 The problem starts from my Mac-OS development machine, on which the dependencies are collected.
@@ -24,7 +26,7 @@ The problem starts from my Mac-OS development machine, on which the dependencies
 During deployment process, one of the base dependency of `azure.storage.blob` module
 is [cryptography](https://cryptography.io/en/latest/installation/#supported-platforms)
 library, which has native code and is built differently depending on the OS.
-Since, I do have a `macOS Monterery`, the runtime environment is incompatible with any other OS. 
+Since, I do have a `macOS Monterery`, the runtime environment is incompatible with any other OS.
 However, the OS of my Azure Function App is `linux/amd64`, which will not work definitely with the dependencies built on
 `macOS Monterery` and will raise an `ImportError`.
 
@@ -45,10 +47,12 @@ However, the OS of my Azure Function App is `linux/amd64`, which will not work d
 ## Solution
 
 To solve the issue, we need to build the dependencies on the OS used by our **Azure Function App**.
-This could be done of course using [Docker](https://docs.docker.com) relying on the `mcr.microsoft.com/azure-functions/python` image
+This could be done of course using [Docker](https://docs.docker.com) relying on
+the `mcr.microsoft.com/azure-functions/python` image
 (all supported azure function images could be found [here](https://hub.docker.com/_/microsoft-azure-functions)).
 
 So, step-by-step solution is as following:
+
 1. Deploy the essential infrastructures (App Service plan, Function App and Storage Account).
 2. Build a Docker container and install the dependencies inside it.
 3. Copy the dependencies from the docker container to `.python_packages` in the source code folder (of the functions).
