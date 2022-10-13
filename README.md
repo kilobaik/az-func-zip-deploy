@@ -25,8 +25,9 @@ The problem starts from my Macbook development machine, on which the dependencie
 During deployment process, one of the base dependency of `azure.storage.blob` module
 is [cryptography](https://cryptography.io/en/latest/installation/#supported-platforms)
 library, which has native code and is built differently depending on the OS.
-Since, I do have a `macOS Monterery`, the runtime environment is incompatible with any other OS like the OS of my
-Azure Function App (`linux/amd64`), which will not work definitely with the dependencies built on
+Since, I do have a `macOS Monterery`, the runtime environment is incompatible with any other OS (such as my Azure Function App OS).
+
+My Azure Function App uses `linux/amd64` OS, which will not work definitely with the dependencies built on
 `macOS Monterery` and will raise an `ImportError`.
 
 > ```python
